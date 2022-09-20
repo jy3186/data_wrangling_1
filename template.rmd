@@ -29,6 +29,7 @@ tail(litters_df)
 view(litter_df)
 
 skimr::skim(litters_df)
+
 ```
 
 `read_csv` options
@@ -36,3 +37,16 @@ skimr::skim(litters_df)
 ```{r}
 read.csv("data/FAS_litters.csv", skip = 2)
 ```
+
+#other file format
+
+```{r, echo = FALSE}
+library(tidyverse)
+library(readxl)
+```
+we need to read in an excel spreadsheet
+
+```{r}
+mlb_df = read_excel("data/mlb11.xlsx")
+```
+

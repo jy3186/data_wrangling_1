@@ -218,3 +218,20 @@ read.csv("data/FAS_litters.csv", skip = 2)
     ## 45 Low8            #108 25.6 47.5  20  8  0  7
     ## 46 Low8             #99 23.5 39.0  20  6  0  5
     ## 47 Low8            #110 25.5 42.7  20  7  0  6
+
+\#other file format
+
+    ## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
+    ## ✔ ggplot2 3.3.6      ✔ purrr   0.3.4 
+    ## ✔ tibble  3.1.8      ✔ dplyr   1.0.10
+    ## ✔ tidyr   1.2.0      ✔ stringr 1.4.1 
+    ## ✔ readr   2.1.2      ✔ forcats 0.5.2 
+    ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+    ## ✖ dplyr::filter() masks stats::filter()
+    ## ✖ dplyr::lag()    masks stats::lag()
+
+we need to read in an excel spreadsheet
+
+``` r
+mlb_df = read_excel("data/mlb11.xlsx")
+```
