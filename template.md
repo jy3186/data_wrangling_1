@@ -235,3 +235,20 @@ we need to read in an excel spreadsheet
 ``` r
 mlb_df = read_excel("data/mlb11.xlsx")
 ```
+
+read in a SAS dataset
+
+``` r
+library(haven)
+pulse_df = read_sas("data/public_pulse_data.sas7bdat")
+```
+
+## data export
+
+\##`{r} ##write_df = write_csv(lotr_words_df, file = "data/lotr_words_df.csv") ##`
+
+## why not base r???
+
+``` r
+dont_do_this_df = read.csv("data/FAS_litters.csv")
+```
