@@ -10,5 +10,29 @@ I'm an R Markdown document!
 lets import data using the `readr` package
 
 ```{r}
-read.csv("data/FAS_litters.csv")
+litters_df = read.csv("data/FAS_litters.csv")
+litters_df = janitor::clean_names(litters_df)
+#help you prevent loading multiple packages
+```
+
+look at the data
+
+```{r}
+litters_df
+
+head(litters_df)
+tail(litters_df)
+
+```
+
+```{r, eval = FALSE}
+view(litter_df)
+
+skimr::skim(litters_df)
+```
+
+`read_csv` options
+
+```{r}
+read.csv("data/FAS_litters.csv", skip = 2)
 ```
