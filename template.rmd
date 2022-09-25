@@ -10,12 +10,19 @@ I'm an R Markdown document!
 lets import data using the `readr` package
 
 ```{r}
-litters_df = read.csv("data/FAS_litters.csv")
+library(tidyverse)
+library(readr)
+library(readxl)
+library(haven)
+```
+
+```{r}
+litters_df = read.csv("./data/FAS_litters.csv")
 litters_df = janitor::clean_names(litters_df)
 #help you prevent loading multiple packages
 ```
 
-look at the data
+##look at the data
 
 ```{r}
 litters_df
@@ -26,7 +33,6 @@ tail(litters_df)
 ```
 
 ```{r, eval = FALSE}
-view(litter_df)
 
 skimr::skim(litters_df)
 
@@ -35,34 +41,30 @@ skimr::skim(litters_df)
 `read_csv` options
 
 ```{r}
-read.csv("data/FAS_litters.csv", skip = 2)
+read.csv("./data/FAS_litters.csv", skip = 10)
 ```
 
-#other file format
 
-```{r, echo = FALSE}
-library(tidyverse)
-library(readxl)
-```
 we need to read in an excel spreadsheet
 
 ```{r}
-mlb_df = read_excel("data/mlb11.xlsx")
+mlb_df = read_excel("./data/mlb11.xlsx")
+mlb_df
 ```
 
 read in a SAS dataset
 ```{r}
-library(haven)
-pulse_df = read_sas("data/public_pulse_data.sas7bdat")
+pulse_df = read_sas("./data/public_pulse_data.sas7bdat")
+pulse_df
 ```
 
 ## data export
 
-##```{r}
-##write_df = write_csv(lotr_words_df, file = "data/lotr_words_df.csv")
-##```
+```{r}
+write_df = write_csv(lotr_words_df, file = "./data/lotr_words_df.csv")
+```
 
 ## why not base r???
 ```{r}
-dont_do_this_df = read.csv("data/FAS_litters.csv")
+dont_do_this_df = read.csv("./data/FAS_litters.csv")
 ```
