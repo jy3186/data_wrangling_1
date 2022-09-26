@@ -247,6 +247,21 @@ mutate(
     ## # … with 46 more rows, and abbreviated variable names ¹​gd18_weight,
     ## #   ²​gd_of_birth, ³​pups_born_alive, ⁴​pups_dead_birth, ⁵​pups_survive
 
+\##‘arrange’
+
+``` r
+arrange(litters_data, pups_born_alive)
+```
+
+    ## # A tibble: 49 × 8
+    ##   group litter_number gd0_weight gd18_weight gd_of_birth pups_…¹ pups_…² pups_…³
+    ##   <chr> <chr>              <dbl>       <dbl>       <int>   <int>   <int>   <int>
+    ## 1 Con7  #85                 19.7        34.7          20       3       4       3
+    ## 2 Low7  #111                25.5        44.6          20       3       2       3
+    ## 3 Low8  #4/84               21.8        35.2          20       4       0       4
+    ## # … with 46 more rows, and abbreviated variable names ¹​pups_born_alive,
+    ## #   ²​pups_dead_birth, ³​pups_survive
+
 ## R Markdown
 
 This is an R Markdown document. Markdown is a simple formatting syntax
