@@ -453,6 +453,49 @@ analysis_result_wide</code></pre>
 ##   &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt;
 ## 1 treatment   4       8
 ## 2 placebo     3.5     4</code></pre>
+<p>##binding rows with lord of rings data</p>
+<pre class="r"><code>fellowship_ring = 
+  readxl::read_excel(&quot;./data/LotR_Words.xlsx&quot;, range = &quot;B3:D6&quot;) %&gt;%
+  mutate(movie = &quot;fellowship_ring&quot;)
+
+two_towers = 
+  readxl::read_excel(&quot;./data/LotR_Words.xlsx&quot;, range = &quot;F3:H6&quot;) %&gt;%
+  mutate(movie = &quot;two_towers&quot;)
+
+return_king = 
+  readxl::read_excel(&quot;./data/LotR_Words.xlsx&quot;, range = &quot;J3:L6&quot;) %&gt;%
+  mutate(movie = &quot;return_king&quot;)
+
+lotr_tidy = 
+  bind_rows(fellowship_ring, two_towers, return_king) %&gt;% 
+  janitor::clean_names() %&gt;% 
+  pivot_longer(
+    female:male,
+    names_to = &quot;gender&quot;,
+    values_to = &quot;words&quot; ) %&gt;% 
+  mutate(race = str_to_lower(race)) 
+lotr_tidy</code></pre>
+<pre><code>## # A tibble: 18 × 4
+##    race   movie           gender words
+##    &lt;chr&gt;  &lt;chr&gt;           &lt;chr&gt;  &lt;dbl&gt;
+##  1 elf    fellowship_ring female  1229
+##  2 elf    fellowship_ring male     971
+##  3 hobbit fellowship_ring female    14
+##  4 hobbit fellowship_ring male    3644
+##  5 man    fellowship_ring female     0
+##  6 man    fellowship_ring male    1995
+##  7 elf    two_towers      female   331
+##  8 elf    two_towers      male     513
+##  9 hobbit two_towers      female     0
+## 10 hobbit two_towers      male    2463
+## 11 man    two_towers      female   401
+## 12 man    two_towers      male    3589
+## 13 elf    return_king     female   183
+## 14 elf    return_king     male     510
+## 15 hobbit return_king     female     2
+## 16 hobbit return_king     male    2673
+## 17 man    return_king     female   268
+## 18 man    return_king     male    2459</code></pre>
 </div>
 
 
