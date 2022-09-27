@@ -435,6 +435,24 @@ print(pulse_df, n = 12)</code></pre>
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre class="r"><code>analysis_result = tibble(
+  group = c(&quot;treatment&quot;, &quot;treatment&quot;, &quot;placebo&quot;, &quot;placebo&quot;),
+  time = c(&quot;pre&quot;, &quot;post&quot;, &quot;pre&quot;, &quot;post&quot;),
+  mean = c(4, 8, 3.5, 4)
+)
+
+analysis_result_wide = 
+  pivot_wider(
+    analysis_result, names_from = &quot;time&quot;,
+    values_from = &quot;mean&quot;
+  )
+
+analysis_result_wide</code></pre>
+<pre><code>## # A tibble: 2 × 3
+##   group       pre  post
+##   &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt;
+## 1 treatment   4       8
+## 2 placebo     3.5     4</code></pre>
 </div>
 
 

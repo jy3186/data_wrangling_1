@@ -46,3 +46,20 @@ litters =
   mutate(gd = recode(gd, gd0_weight = "0", gd18_weight = "18"))
 ```
 
+```{r}
+
+analysis_result = tibble(
+  group = c("treatment", "treatment", "placebo", "placebo"),
+  time = c("pre", "post", "pre", "post"),
+  mean = c(4, 8, 3.5, 4)
+)
+
+analysis_result_wide = 
+  pivot_wider(
+    analysis_result, names_from = "time",
+    values_from = "mean"
+  )
+
+analysis_result_wide
+```
+
