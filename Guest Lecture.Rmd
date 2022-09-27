@@ -29,7 +29,20 @@ pulse_df =
   relocate(visit) %>% 
   mutate(
     visit = replace(visit, visit == "bl", "00m"),
-    visit = factor(visit)
-  )
+    visit = factor(visit) )%>% 
+      arrange(id, visit)
+
+print(pulse_df, n = 12)
+```
+```{r}
+litters = 
+  read_csv("./data/FAS_litters.csv") %>% 
+  janitor::clean_names() %>% 
+  select(litter_number, ends_with("weight")) %>% 
+  pivot_longer(
+    gd0_weight:gd18_weight,
+    names_to = "gd",
+    values_to = "weight") %>% 
+  mutate(gd = recode(gd, gd0_weight = "0", gd18_weight = "18"))
 ```
 

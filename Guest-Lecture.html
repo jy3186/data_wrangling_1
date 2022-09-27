@@ -398,8 +398,43 @@ on using R Markdown see <a href="http://rmarkdown.rstudio.com" class="uri">http:
   relocate(visit) %&gt;% 
   mutate(
     visit = replace(visit, visit == &quot;bl&quot;, &quot;00m&quot;),
-    visit = factor(visit)
-  )</code></pre>
+    visit = factor(visit) )%&gt;% 
+      arrange(id, visit)
+
+print(pulse_df, n = 12)</code></pre>
+<pre><code>## # A tibble: 4,348 × 5
+##    visit    id   age sex     bdi
+##    &lt;fct&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
+##  1 00m   10003  48.0 male      7
+##  2 01m   10003  48.0 male      1
+##  3 06m   10003  48.0 male      2
+##  4 12m   10003  48.0 male      0
+##  5 00m   10015  72.5 male      6
+##  6 01m   10015  72.5 male     NA
+##  7 06m   10015  72.5 male     NA
+##  8 12m   10015  72.5 male     NA
+##  9 00m   10022  58.5 male     14
+## 10 01m   10022  58.5 male      3
+## 11 06m   10022  58.5 male      8
+## 12 12m   10022  58.5 male     NA
+## # … with 4,336 more rows</code></pre>
+<pre class="r"><code>litters = 
+  read_csv(&quot;./data/FAS_litters.csv&quot;) %&gt;% 
+  janitor::clean_names() %&gt;% 
+  select(litter_number, ends_with(&quot;weight&quot;)) %&gt;% 
+  pivot_longer(
+    gd0_weight:gd18_weight,
+    names_to = &quot;gd&quot;,
+    values_to = &quot;weight&quot;) %&gt;% 
+  mutate(gd = recode(gd, gd0_weight = &quot;0&quot;, gd18_weight = &quot;18&quot;))</code></pre>
+<pre><code>## Rows: 49 Columns: 8
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (2): Group, Litter Number
+## dbl (6): GD0 weight, GD18 weight, GD of Birth, Pups born alive, Pups dead @ ...
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
 
 
